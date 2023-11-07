@@ -30,13 +30,13 @@ public class RegisterServlet extends HttpServlet {
 		try {
 			Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
 		
-			//넣고자하는 DB 값 설정
+			//넣고자 하는 DB 값 설정.
 			/*
 			 * CREATE TABLE MemberInfo (
 				    MNO INT PRIMARY KEY,
 				    MName VARCHAR(50),
 				    MEmail VARCHAR(100),
-				    MBirth  DATE
+				    MBirth DATE
 			);*/
 			   int mno = Integer.parseInt(request.getParameter("mno"));
 	            String mname = request.getParameter("mname");

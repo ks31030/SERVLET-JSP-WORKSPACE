@@ -18,8 +18,8 @@ public class RegisterServlet extends HttpServlet {
 		// JDBC 불러오기
 		
 		String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
-		String jdbcUsername = "khmember";
-		String jdbcPassword = "kh1234";
+		String jdbcUsername = "KHCAFE";
+		String jdbcPassword = "KH1234";
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 		} catch (ClassNotFoundException e) {
@@ -30,14 +30,6 @@ public class RegisterServlet extends HttpServlet {
 		try {
 			Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
 		
-			//넣고자 하는 DB 값 설정.
-			/*
-			 * CREATE TABLE MemberInfo (
-				    MNO INT PRIMARY KEY,
-				    MName VARCHAR(50),
-				    MEmail VARCHAR(100),
-				    MBirth DATE
-			);*/
 			   int mno = Integer.parseInt(request.getParameter("mno"));
 	            String mname = request.getParameter("mname");
 	            String memail = request.getParameter("memail");
@@ -49,7 +41,7 @@ public class RegisterServlet extends HttpServlet {
 	            preparedStatement.setInt(1, mno);
 	            preparedStatement.setString(2, mname);
 	            preparedStatement.setString(3, memail);
-	            preparedStatement.setDate(4, java.sql.Date.valueOf(mbirth));
+	            preparedStatement.setDate(4, Date.valueOf(mbirth));
 
 	            preparedStatement.executeUpdate();
 			

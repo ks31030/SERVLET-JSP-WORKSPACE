@@ -30,8 +30,8 @@ public class LoginServlet extends HttpServlet {
 				//login
 				//memail 로그인할 때 아이디값으로 사용할 이메일
 				//mno 로그인할 때 비밀번호값으로 사용할 넘버.
-				String memail = request.getParameter("MEMAIL");
-				String mno = request.getParameter("MNO");
+				String memail = request.getParameter("m_email");
+				String mno = request.getParameter("m_no");
 				
 				//select 일치하는 유저가 존재하는지 확인.
 				String sql = "SELECT * FROM MEMBERINFO WHERE MEMAIL=? AND MNO=?";
@@ -53,10 +53,15 @@ public class LoginServlet extends HttpServlet {
 					//세션이 없으면 새로운 세션을 생성하고
 					//이미 세션이 존재하면 해당 세션을 가지고 옴.
 					HttpSession session = request.getSession();
-					session.setAttribute("mno", resultSet.getInt("MNO"));
-					session.setAttribute("mname", resultSet.getString("MNAME"));
+					session.setAttribute("mno", resultSet.getInt("mno"));
+					session.setAttribute("mname", resultSet.getString("mname"));
 					session.setAttribute("memail", memail);
-					session.setAttribute("mbirth", resultSet.getDate("MBIRTH"));
+					session.setAttribute("mbirth", resultSet.getDate("mbirth"));
+					
+					//로그인 시간을 30분으로 설정.
+					//Inactive : 비활성화. 활동하지 않는 상태.
+					//Interval : 간격
+					session.setMaxInactiveInterval(1800);//30분 = 1800
 					
 					//로그인에 성공하면 성공에 대한 데이터를 login_success에 전달해줌.
 					response.sendRedirect("login_success.jsp");

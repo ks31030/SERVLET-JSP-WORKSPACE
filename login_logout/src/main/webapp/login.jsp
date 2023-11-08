@@ -9,10 +9,10 @@
 <body>
 <h1> 로그인 </h1>
 <form action ="LoginServlet" method="post">
-	<label>이메일 : </label>
-	<input type="email" id="memail" name="memail" required><br>
+	<label for ="memail">이메일 : </label>
+	<input type="email" id="memail" name="m_email" required><br>
 	<label for = "mno">로그인할 비밀번호 넘버 : </label>
-	<input type="password" id="mno" name="mno" required><br>
+	<input type="password" id="mno" name="m_no" required><br>
 	<input type="submit" value="로그인">
 </form>
 </body>

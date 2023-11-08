@@ -18,6 +18,6 @@
 <%String memail = (String)session.getAttribute("memail");%>
 	<p>환영합니다. <%=memail %>님!</p>
 	<p>3초 후 홈페이지로 이동합니다.</p>
-	<p><a href="logout.jsp">로그아웃</a></p>
+	<p><a href="logout">로그아웃</a></p>
 </body>
 </html>
